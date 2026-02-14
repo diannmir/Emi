@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" type="image/png" href="resources/favicon.png">
+
+  <title>emi | login</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body class="login-body">
+  <main class="console-shell" aria-label="Game login">
+    <div class="console-top">
+      <p class="console-brand">EMI BOY</p>
+      <p class="console-level">Stage 1: Login</p>
+    </div>
+
+    <section class="content console-screen" aria-labelledby="login-title">
+      <h1 id="login-title" class="text">Press Start</h1>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <span class="fas fa-user" aria-hidden="true"></span>
+          <input type="text" id="username" name="username" placeholder=" " autocomplete="username" required>
+          <label for="username">Player name</label>
+        </div>
+
+        <div class="field">
+          <span class="fas fa-lock" aria-hidden="true"></span>
+          <input type="password" id="password" name="password" placeholder=" " autocomplete="current-password" required>
+          <label for="password">Secret code</label>
+        </div>
+
+        <p class="forgot-pass">
+          <button id="forgot" type="button" class="linklike">Hint?</button>
+        </p>
+
+        <button id="signinButton" type="submit">Start Game</button>
+        <p id="loginError" class="error" role="alert" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
+    <div class="console-bottom" aria-hidden="true">
+      <span class="led"></span>
+      <span class="speaker-grid"></span>
+    </div>
+  </main>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

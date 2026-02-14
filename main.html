@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="resources/favicon.png">
+  <title>emi | main</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body class="main-body">
+  <div class="rectangulo" aria-hidden="true"></div>
+
+  <main class="console-shell" aria-label="Game dashboard">
+    <div class="console-top">
+      <p class="console-brand">EMI BOY</p>
+      <p class="console-level">Stage 2: Main</p>
+    </div>
+
+    <section class="content console-screen main-screen" aria-live="polite">
+      <div class="top-controls">
+        <div id="welcome" class="welcome-text"></div>
+        <button id="logout-btn" class="logout-btn" type="button" aria-label="Salir">&#x23FB;</button>
+      </div>
+
+      <nav class="window-tabs" aria-label="Ventanas">
+        <button class="tab-btn active" type="button" data-window="galleryWindow" title="Galeria" aria-label="Galeria">
+          <i class="fa-solid fa-film tab-icon" aria-hidden="true"></i>
+          <span class="sr-only">galeria</span>
+        </button>
+        <button class="tab-btn" type="button" data-window="musicWindow" title="Musica" aria-label="Musica">
+          <i class="fa-solid fa-compact-disc tab-icon" aria-hidden="true"></i>
+          <span class="sr-only">musica</span>
+        </button>
+        <button class="tab-btn" type="button" data-window="messageWindow" title="Mensajeria" aria-label="Mensajeria">
+          <i class="fa-solid fa-comment-dots tab-icon" aria-hidden="true"></i>
+          <span class="sr-only">mensajeria</span>
+        </button>
+        <button class="tab-btn" type="button" data-window="storeWindow" title="Tienda" aria-label="Tienda">
+          <i class="fa-solid fa-basket-shopping tab-icon" aria-hidden="true"></i>
+          <span class="sr-only">tienda</span>
+        </button>
+      </nav>
+
+      <section id="galleryWindow" class="panel window-panel no-scroll active-window">
+        <h2>Galery</h2>
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn" type="button" data-dir="-1" aria-label="Anterior">&#10094;</button>
+          <figure class="carousel-frame">
+            <img id="galleryImage" src="resources/image.png" alt="galeria 1">
+            <figcaption id="galleryCaption">1 / 11</figcaption>
+          </figure>
+          <button class="carousel-btn" type="button" data-dir="1" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <div class="carousel-track" hidden>
+          <img src="resources/image.png" alt="galeria 1">
+          <img src="resources/image (1).png" alt="galeria 2">
+          <img src="resources/image (2).png" alt="galeria 3">
+          <img src="resources/image (3).png" alt="galeria 4">
+          <img src="resources/image (4).png" alt="galeria 5">
+          <img src="resources/image (5).png" alt="galeria 6">
+          <img src="resources/image (6).png" alt="galeria 7">
+          <img src="resources/image (7).png" alt="galeria 8">
+          <img src="resources/image (8).png" alt="galeria 9">
+          <img src="resources/image (9).png" alt="galeria 10">
+          <img src="resources/image (10).png" alt="galeria 11">
+        </div>
+      </section>
+
+      <section id="musicWindow" class="panel window-panel" hidden>
+        <h2>Music</h2>
+        <p id="nowPlaying" class="now-playing">NOW PLAYING: swan - not for radio</p>
+        <div class="player-shell">
+          <p class="player-label">PLAYER-01</p>
+          <audio id="mainPlayer" controls class="local-audio">
+            <source src="resources/cancion1.wav" type="audio/wav">
+          </audio>
+          <div class="music-carousel">
+            <button id="prevTrackBtn" class="carousel-btn" type="button" aria-label="Pista anterior">&#10094;</button>
+            <div class="track-nav-center" aria-hidden="true"></div>
+            <button id="nextTrackBtn" class="carousel-btn" type="button" aria-label="Pista siguiente">&#10095;</button>
+          </div>
+        </div>
+        <div id="trackData" hidden>
+          <button type="button" data-src="resources/cancion1.wav" data-title="swan - not for radio"></button>
+          <button type="button" data-src="resources/cancion3.wav" data-title="till there was you - the beatles"></button>
+          <button type="button" data-src="resources/cancion2.wav" data-title="wonderwall - oasis"></button>
+          <button type="button" data-src="resources/cancion4.wav" data-title="the only exception - paramore"></button>
+        </div>
+      </section>
+
+      <section id="messageWindow" class="panel window-panel" hidden>
+        <h2>Messages</h2>
+        <p class="panel-note">Inbox from pili</p>
+        <ul id="messageList" class="list-board inbox-list"></ul>
+        <article id="messageViewer" class="message-viewer" hidden>
+          <h3 id="messageViewerTitle">OPEN MESSAGE</h3>
+          <p id="messageViewerMeta"></p>
+          <p id="messageViewerBody"></p>
+          <div class="message-reply">
+            <input id="replyInput" type="text" maxlength="220" placeholder="Write your reply...">
+            <button id="replyByMailBtn" type="button">send</button>
+          </div>
+          <p id="replyStatus" class="reply-status" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section id="storeWindow" class="panel window-panel" hidden>
+        <h2>Store</h2>
+        <div class="store-items">
+          <article class="store-item">
+            <h3>Papas</h3>
+            <p>Papas grandes de Mcdonalds, incluye nuggets. </p>
+            <button class="buy-btn" type="button" data-item="Papas" data-note="pedido confirmado">buy</button>
+          </article>
+          <article class="store-item">
+            <h3>Regalo</h3>
+            <p>Entrega especial.</p>
+            <button class="buy-btn" type="button" data-item="Regalo" data-note="llega el 25 de febrero">buy</button>
+          </article>
+          <article class="store-item">
+            <h3>Sticker</h3>
+            <p>Coleccionable, incluye beso.</p>
+            <button class="buy-btn" type="button" data-item="Sticker" data-note="pedido confirmado">buy</button>
+          </article>
+        </div>
+      </section>
+    </section>
+
+
+    <div class="console-bottom" aria-hidden="true">
+      <span class="led"></span>
+      <span class="speaker-grid"></span>
+    </div>
+  </main>
+
+  <div id="purchaseModal" class="modal-backdrop" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="purchaseTitle">
+      <h3 id="purchaseTitle">Compra confirmada</h3>
+      <p id="purchaseMessage">Tu orden fue registrada.</p>
+      <button id="closePurchaseModal" type="button" aria-label="Close">&times;</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="module" src="js/guard.js"></script>
+  <script type="module" src="js/main-ui.js"></script>
+  <script type="module" src="js/music-player.js"></script>
+  <script type="module" src="js/logout.js"></script>
+</body>
+</html>
